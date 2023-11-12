@@ -8,7 +8,7 @@ class UserImage {
   final int? albumId;
   final String? title;
   final String url;
-  final int? thumbnailUrl;
+  final String? thumbnailUrl;
 
   UserImage({
     required this.id,

@@ -1,4 +1,6 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:eclipse_test/core/theme.dart';
+import 'package:eclipse_test/user_screen/user_screen.dart';
 import 'package:flutter/material.dart';
 
 class Application extends StatefulWidget {
@@ -13,11 +15,8 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeBuilder.build(),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      builder: BotToastInit(),
+      home: UserScreen(),
     );
   }
 }

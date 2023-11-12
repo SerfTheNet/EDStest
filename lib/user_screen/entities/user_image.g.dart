@@ -11,7 +11,7 @@ UserImage _$UserImageFromJson(Map<String, dynamic> json) => UserImage(
       albumId: json['albumId'] as int?,
       title: json['title'] as String?,
       url: json['url'] as String,
-      thumbnailUrl: json['thumbnailUrl'] as int?,
+      thumbnailUrl: json['thumbnailUrl'] as String?,
     );
 
 Map<String, dynamic> _$UserImageToJson(UserImage instance) => <String, dynamic>{

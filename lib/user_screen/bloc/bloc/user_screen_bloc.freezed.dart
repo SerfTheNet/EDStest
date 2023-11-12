@@ -15,188 +15,15 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UserScreenEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserScreenEventCopyWith<$Res> {
-  factory $UserScreenEventCopyWith(
-          UserScreenEvent value, $Res Function(UserScreenEvent) then) =
-      _$UserScreenEventCopyWithImpl<$Res, UserScreenEvent>;
-}
-
-/// @nodoc
-class _$UserScreenEventCopyWithImpl<$Res, $Val extends UserScreenEvent>
-    implements $UserScreenEventCopyWith<$Res> {
-  _$UserScreenEventCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$UserScreenEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'UserScreenEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements UserScreenEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
 mixin _$UserScreenState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool get isLoading => throw _privateConstructorUsedError;
+  List<User> get users => throw _privateConstructorUsedError;
+  int get currentScreen => throw _privateConstructorUsedError;
+  int get offset => throw _privateConstructorUsedError;
+  bool get isAllLoaded => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UserScreenStateCopyWith<UserScreenState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -205,6 +32,13 @@ abstract class $UserScreenStateCopyWith<$Res> {
   factory $UserScreenStateCopyWith(
           UserScreenState value, $Res Function(UserScreenState) then) =
       _$UserScreenStateCopyWithImpl<$Res, UserScreenState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      List<User> users,
+      int currentScreen,
+      int offset,
+      bool isAllLoaded});
 }
 
 /// @nodoc
@@ -216,100 +50,189 @@ class _$UserScreenStateCopyWithImpl<$Res, $Val extends UserScreenState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? users = null,
+    Object? currentScreen = null,
+    Object? offset = null,
+    Object? isAllLoaded = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      users: null == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+      currentScreen: null == currentScreen
+          ? _value.currentScreen
+          : currentScreen // ignore: cast_nullable_to_non_nullable
+              as int,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
+      isAllLoaded: null == isAllLoaded
+          ? _value.isAllLoaded
+          : isAllLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$UserScreenStateImplCopyWith<$Res>
+    implements $UserScreenStateCopyWith<$Res> {
+  factory _$$UserScreenStateImplCopyWith(_$UserScreenStateImpl value,
+          $Res Function(_$UserScreenStateImpl) then) =
+      __$$UserScreenStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoading,
+      List<User> users,
+      int currentScreen,
+      int offset,
+      bool isAllLoaded});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$UserScreenStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$UserScreenStateImplCopyWithImpl<$Res>
+    extends _$UserScreenStateCopyWithImpl<$Res, _$UserScreenStateImpl>
+    implements _$$UserScreenStateImplCopyWith<$Res> {
+  __$$UserScreenStateImplCopyWithImpl(
+      _$UserScreenStateImpl _value, $Res Function(_$UserScreenStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? users = null,
+    Object? currentScreen = null,
+    Object? offset = null,
+    Object? isAllLoaded = null,
+  }) {
+    return _then(_$UserScreenStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      users: null == users
+          ? _value._users
+          : users // ignore: cast_nullable_to_non_nullable
+              as List<User>,
+      currentScreen: null == currentScreen
+          ? _value.currentScreen
+          : currentScreen // ignore: cast_nullable_to_non_nullable
+              as int,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as int,
+      isAllLoaded: null == isAllLoaded
+          ? _value.isAllLoaded
+          : isAllLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$UserScreenStateImpl implements _UserScreenState {
+  const _$UserScreenStateImpl(
+      {this.isLoading = true,
+      final List<User> users = const [],
+      this.currentScreen = 0,
+      this.offset = 0,
+      this.isAllLoaded = false})
+      : _users = users;
+
+  @override
+  @JsonKey()
+  final bool isLoading;
+  final List<User> _users;
+  @override
+  @JsonKey()
+  List<User> get users {
+    if (_users is EqualUnmodifiableListView) return _users;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_users);
+  }
+
+  @override
+  @JsonKey()
+  final int currentScreen;
+  @override
+  @JsonKey()
+  final int offset;
+  @override
+  @JsonKey()
+  final bool isAllLoaded;
 
   @override
   String toString() {
-    return 'UserScreenState.initial()';
+    return 'UserScreenState(isLoading: $isLoading, users: $users, currentScreen: $currentScreen, offset: $offset, isAllLoaded: $isAllLoaded)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UserScreenStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.currentScreen, currentScreen) ||
+                other.currentScreen == currentScreen) &&
+            (identical(other.offset, offset) || other.offset == offset) &&
+            (identical(other.isAllLoaded, isAllLoaded) ||
+                other.isAllLoaded == isAllLoaded));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_users),
+      currentScreen,
+      offset,
+      isAllLoaded);
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$UserScreenStateImplCopyWith<_$UserScreenStateImpl> get copyWith =>
+      __$$UserScreenStateImplCopyWithImpl<_$UserScreenStateImpl>(
+          this, _$identity);
 }
 
-abstract class _Initial implements UserScreenState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _UserScreenState implements UserScreenState {
+  const factory _UserScreenState(
+      {final bool isLoading,
+      final List<User> users,
+      final int currentScreen,
+      final int offset,
+      final bool isAllLoaded}) = _$UserScreenStateImpl;
+
+  @override
+  bool get isLoading;
+  @override
+  List<User> get users;
+  @override
+  int get currentScreen;
+  @override
+  int get offset;
+  @override
+  bool get isAllLoaded;
+  @override
+  @JsonKey(ignore: true)
+  _$$UserScreenStateImplCopyWith<_$UserScreenStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

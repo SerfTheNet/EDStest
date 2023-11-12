@@ -84,5 +84,5 @@ class ApiResponse<T> {
     this.httpResponse,
   });
 
-  bool get isError => error != null;
+  bool get isError => error != null && result != null;
 }

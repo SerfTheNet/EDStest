@@ -4,6 +4,6 @@ class Config {
 }
 
 class InfiniteScrollConfig {
-  static const offsetDelta = 5;
+  static const offsetDelta = 100;
   static const loadingDelta = 3;
 }

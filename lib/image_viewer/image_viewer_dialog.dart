@@ -26,7 +26,7 @@ class ImageViewerDialog extends StatelessWidget {
     return BlocBuilder<ImageViewerQubit, ImageViewerState>(
       bloc: imageBloc,
       builder: (context, state) {
-        return state.isLoading
+        return state.imagesList.isEmpty
             ? const SizedBox.shrink()
             : _buildPageView(context, state);
       },

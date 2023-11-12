@@ -16,7 +16,7 @@ class _ApplicationState extends State<Application> {
     return MaterialApp(
       theme: ThemeBuilder.build(),
       builder: BotToastInit(),
-      home: UserScreen(),
+      home: const UserScreen(),
     );
   }
 }

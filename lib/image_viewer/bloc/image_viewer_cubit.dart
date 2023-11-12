@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:eclipse_test/api/images_api/entities/user_image.dart';
+import 'package:eclipse_test/api/users_api/entities/user.dart';
 import 'package:eclipse_test/core/config.dart';
-import 'package:eclipse_test/image_viewer/images_api.dart';
-import 'package:eclipse_test/user_screen/entities/user_image.dart';
+import 'package:eclipse_test/api/images_api/images_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'image_viewer_state.dart';
@@ -12,17 +13,34 @@ part 'image_viewer_cubit.freezed.dart';
 
 class ImageViewerQubit extends Cubit<ImageViewerState> {
   final _api = ImagesApi();
-  final int userId;
+  final User user;
   Timer? timer;
 
-  ImageViewerQubit(super.initialState, this.userId);
+  // В API нет возможности получить фотографии одного пользователя!
+  // Чрезвычайно неэффективное решение фильтрацию по альбомам пользователя
+  final Set<int> _userAlbumsIdSet;
+
+  ImageViewerQubit(super.initialState, this.user) : _userAlbumsIdSet = {};
+
+  Future<void> initialize() async {
+    final albumsResponse = await _api.fetchUserAlbums(userId: user.id);
+    if (albumsResponse.isError) return;
+
+    _userAlbumsIdSet.addAll(
+      albumsResponse.result!.map((album) => album.id),
+    );
+
+    processNewImages(0);
+  }
 
   Future<void> processNewImages(int imageIndex) async {
     if (state.imagesList.length >
             imageIndex + InfiniteScrollConfig.loadingDelta ||
-        state.isAllLoaded) return;
+        state.isAllLoaded ||
+        _userAlbumsIdSet.isEmpty) return;
 
     final loadedImages = await _loadNewImages();
+
     if (loadedImages == null) {
       timer?.cancel();
       timer = Timer(
@@ -31,23 +49,31 @@ class ImageViewerQubit extends Cubit<ImageViewerState> {
       );
       return;
     }
-    ;
 
-    loadedImages.isEmpty
-        ? emit(state.copyWith(isAllLoaded: true))
-        : emit(
-            state.copyWith(
-              imagesList: [...state.imagesList, ...loadedImages],
-              offset: state.offset + InfiniteScrollConfig.offsetDelta,
-              isAllLoaded: loadedImages.isEmpty,
-              isLoading: false,
-            ),
-          );
+    if (loadedImages.isEmpty) {
+      emit(state.copyWith(isAllLoaded: true));
+    } else {
+      final userFiltredImgs = loadedImages
+          .where(
+            (element) => _userAlbumsIdSet.contains(element.albumId),
+          )
+          .toList();
+
+      emit(
+        state.copyWith(
+          imagesList: [...state.imagesList, ...userFiltredImgs],
+          offset: state.offset + InfiniteScrollConfig.offsetDelta,
+          isAllLoaded: loadedImages.isEmpty,
+        ),
+      );
+
+      if (userFiltredImgs.isEmpty) processNewImages(imageIndex);
+    }
   }
 
   Future<List<UserImage>?> _loadNewImages() async {
     final response = await _api.fetchUserImages(
-      userId: userId,
+      userId: user.id,
       offset: state.offset,
     );
 

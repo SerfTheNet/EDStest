@@ -1,6 +1,6 @@
-import 'package:eclipse_test/user_screen/entities/user_address.dart';
-import 'package:eclipse_test/user_screen/entities/user_company.dart';
-import 'package:eclipse_test/user_screen/entities/user_image.dart';
+import 'package:eclipse_test/api/images_api/entities/user_image.dart';
+import 'package:eclipse_test/api/users_api/entities/user_address.dart';
+import 'package:eclipse_test/api/users_api/entities/user_company.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';

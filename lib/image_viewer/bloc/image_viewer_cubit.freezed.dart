@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ImageViewerState {
-  bool get isLoading => throw _privateConstructorUsedError;
   bool get isAllLoaded => throw _privateConstructorUsedError;
   int get offset => throw _privateConstructorUsedError;
   List<UserImage> get imagesList => throw _privateConstructorUsedError;
@@ -32,11 +31,7 @@ abstract class $ImageViewerStateCopyWith<$Res> {
           ImageViewerState value, $Res Function(ImageViewerState) then) =
       _$ImageViewerStateCopyWithImpl<$Res, ImageViewerState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isAllLoaded,
-      int offset,
-      List<UserImage> imagesList});
+  $Res call({bool isAllLoaded, int offset, List<UserImage> imagesList});
 }
 
 /// @nodoc
@@ -52,16 +47,11 @@ class _$ImageViewerStateCopyWithImpl<$Res, $Val extends ImageViewerState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? isAllLoaded = null,
     Object? offset = null,
     Object? imagesList = null,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       isAllLoaded: null == isAllLoaded
           ? _value.isAllLoaded
           : isAllLoaded // ignore: cast_nullable_to_non_nullable
@@ -86,11 +76,7 @@ abstract class _$$ImageViewerStateImplCopyWith<$Res>
       __$$ImageViewerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      bool isAllLoaded,
-      int offset,
-      List<UserImage> imagesList});
+  $Res call({bool isAllLoaded, int offset, List<UserImage> imagesList});
 }
 
 /// @nodoc
@@ -104,16 +90,11 @@ class __$$ImageViewerStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
     Object? isAllLoaded = null,
     Object? offset = null,
     Object? imagesList = null,
   }) {
     return _then(_$ImageViewerStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
       isAllLoaded: null == isAllLoaded
           ? _value.isAllLoaded
           : isAllLoaded // ignore: cast_nullable_to_non_nullable
@@ -134,15 +115,11 @@ class __$$ImageViewerStateImplCopyWithImpl<$Res>
 
 class _$ImageViewerStateImpl implements _ImageViewerState {
   _$ImageViewerStateImpl(
-      {this.isLoading = true,
-      this.isAllLoaded = false,
+      {this.isAllLoaded = false,
       this.offset = 0,
       final List<UserImage> imagesList = const []})
       : _imagesList = imagesList;
 
-  @override
-  @JsonKey()
-  final bool isLoading;
   @override
   @JsonKey()
   final bool isAllLoaded;
@@ -160,7 +137,7 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
 
   @override
   String toString() {
-    return 'ImageViewerState(isLoading: $isLoading, isAllLoaded: $isAllLoaded, offset: $offset, imagesList: $imagesList)';
+    return 'ImageViewerState(isAllLoaded: $isAllLoaded, offset: $offset, imagesList: $imagesList)';
   }
 
   @override
@@ -168,8 +145,6 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageViewerStateImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
             (identical(other.isAllLoaded, isAllLoaded) ||
                 other.isAllLoaded == isAllLoaded) &&
             (identical(other.offset, offset) || other.offset == offset) &&
@@ -178,7 +153,7 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isAllLoaded, offset,
+  int get hashCode => Object.hash(runtimeType, isAllLoaded, offset,
       const DeepCollectionEquality().hash(_imagesList));
 
   @JsonKey(ignore: true)
@@ -191,13 +166,10 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
 
 abstract class _ImageViewerState implements ImageViewerState {
   factory _ImageViewerState(
-      {final bool isLoading,
-      final bool isAllLoaded,
+      {final bool isAllLoaded,
       final int offset,
       final List<UserImage> imagesList}) = _$ImageViewerStateImpl;
 
-  @override
-  bool get isLoading;
   @override
   bool get isAllLoaded;
   @override

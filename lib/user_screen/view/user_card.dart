@@ -1,8 +1,9 @@
+import 'package:eclipse_test/api/users_api/entities/user.dart';
 import 'package:eclipse_test/core/helpers/extensions/context_extension.dart';
+import 'package:eclipse_test/core/helpers/extensions/padding_extension.dart';
 import 'package:eclipse_test/core/widgets/safe_image.dart';
 import 'package:eclipse_test/image_viewer/bloc/image_viewer_cubit.dart';
 import 'package:eclipse_test/image_viewer/image_viewer_dialog.dart';
-import 'package:eclipse_test/user_screen/entities/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,8 +20,8 @@ class UserCard extends StatelessWidget {
   }) {
     imageCubit = ImageViewerQubit(
       ImageViewerState(),
-      user.id,
-    )..processNewImages(0);
+      user,
+    )..initialize();
   }
 
   @override
@@ -31,9 +32,13 @@ class UserCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildUserPhoto(context),
+            _buildUserPhoto(context).withPadding(
+              const EdgeInsets.only(bottom: 12),
+            ),
             ..._buildCardHeading(context),
-            _buildBulletListInfo(context),
+            _buildBulletListInfo(context).withPadding(
+              const EdgeInsets.only(top: 12),
+            ),
           ],
         ),
       ),

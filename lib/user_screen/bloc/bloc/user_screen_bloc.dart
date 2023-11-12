@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bot_toast/bot_toast.dart';
-import 'package:eclipse_test/user_screen/bloc/bloc/user_api.dart';
-import 'package:eclipse_test/user_screen/entities/user.dart';
+import 'package:eclipse_test/api/users_api/entities/user.dart';
+import 'package:eclipse_test/api/users_api/user_api.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_screen_event.dart';

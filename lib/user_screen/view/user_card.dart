@@ -1,6 +1,6 @@
 import 'package:eclipse_test/core/helpers/extensions/context_extension.dart';
 import 'package:eclipse_test/core/widgets/safe_image.dart';
-import 'package:eclipse_test/image_viewer/bloc/image_viewer_bloc.dart';
+import 'package:eclipse_test/image_viewer/bloc/image_viewer_cubit.dart';
 import 'package:eclipse_test/image_viewer/image_viewer_dialog.dart';
 import 'package:eclipse_test/user_screen/entities/user.dart';
 import 'package:flutter/material.dart';
@@ -11,16 +11,16 @@ class UserCard extends StatelessWidget {
 
   final User user;
 
-  late final ImageViewerBloc imageBloc;
+  late final ImageViewerQubit imageCubit;
 
   UserCard({
     super.key,
     required this.user,
   }) {
-    imageBloc = ImageViewerBloc(
-      ImageViewerState(isLoading: true),
+    imageCubit = ImageViewerQubit(
+      ImageViewerState(),
       user.id,
-    )..add(ImageViewerEvent(index: 0));
+    )..processNewImages(0);
   }
 
   @override
@@ -29,7 +29,7 @@ class UserCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _buildUserPhoto(context),
             ..._buildCardHeading(context),
@@ -41,16 +41,18 @@ class UserCard extends StatelessWidget {
   }
 
   Widget _buildUserPhoto(BuildContext context) {
-    return BlocBuilder<ImageViewerBloc, ImageViewerState>(
-      bloc: imageBloc,
-      buildWhen: (_, current) => current.userImage != null,
+    return BlocBuilder<ImageViewerQubit, ImageViewerState>(
+      bloc: imageCubit,
+      buildWhen: (previous, current) =>
+          previous.imagesList.isEmpty && current.imagesList.isNotEmpty,
       builder: (context, state) {
         return ClipRRect(
           borderRadius: BorderRadius.circular(32),
           child: InkWell(
-            onTap: () => ImageViewerDialog.show(context, imageBloc),
+            onTap: () => ImageViewerDialog.show(context, imageCubit),
             child: SafeImage(
-              imageUrl: state.userImage?.url ?? "",
+              key: ValueKey(state),
+              imageUrl: state.imagesList.firstOrNull?.url ?? "",
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -68,7 +70,7 @@ class UserCard extends StatelessWidget {
         ),
       if (user.company?.name != null)
         Text(
-          user.name!,
+          user.company!.name,
           style: context.textTheme.headlineSmall,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

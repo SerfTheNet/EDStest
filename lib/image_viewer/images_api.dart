@@ -10,7 +10,7 @@ class ImagesApi extends BaseApi {
     return sendGetRequest<List<UserImage>>(
       'photos/',
       params: {
-        'user': userId.toString(),
+        'userId': userId.toString(),
         '_start': offset.toString(),
         '_limit': limit.toString(),
       },

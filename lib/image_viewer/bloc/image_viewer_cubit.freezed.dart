@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'image_viewer_bloc.dart';
+part of 'image_viewer_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -18,10 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ImageViewerState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isAllLoaded => throw _privateConstructorUsedError;
-  int get imageIdx => throw _privateConstructorUsedError;
   int get offset => throw _privateConstructorUsedError;
   List<UserImage> get imagesList => throw _privateConstructorUsedError;
-  UserImage? get userImage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ImageViewerStateCopyWith<ImageViewerState> get copyWith =>
@@ -37,10 +35,8 @@ abstract class $ImageViewerStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isAllLoaded,
-      int imageIdx,
       int offset,
-      List<UserImage> imagesList,
-      UserImage? userImage});
+      List<UserImage> imagesList});
 }
 
 /// @nodoc
@@ -58,10 +54,8 @@ class _$ImageViewerStateCopyWithImpl<$Res, $Val extends ImageViewerState>
   $Res call({
     Object? isLoading = null,
     Object? isAllLoaded = null,
-    Object? imageIdx = null,
     Object? offset = null,
     Object? imagesList = null,
-    Object? userImage = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -72,10 +66,6 @@ class _$ImageViewerStateCopyWithImpl<$Res, $Val extends ImageViewerState>
           ? _value.isAllLoaded
           : isAllLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      imageIdx: null == imageIdx
-          ? _value.imageIdx
-          : imageIdx // ignore: cast_nullable_to_non_nullable
-              as int,
       offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -84,10 +74,6 @@ class _$ImageViewerStateCopyWithImpl<$Res, $Val extends ImageViewerState>
           ? _value.imagesList
           : imagesList // ignore: cast_nullable_to_non_nullable
               as List<UserImage>,
-      userImage: freezed == userImage
-          ? _value.userImage
-          : userImage // ignore: cast_nullable_to_non_nullable
-              as UserImage?,
     ) as $Val);
   }
 }
@@ -103,10 +89,8 @@ abstract class _$$ImageViewerStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isAllLoaded,
-      int imageIdx,
       int offset,
-      List<UserImage> imagesList,
-      UserImage? userImage});
+      List<UserImage> imagesList});
 }
 
 /// @nodoc
@@ -122,10 +106,8 @@ class __$$ImageViewerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? isAllLoaded = null,
-    Object? imageIdx = null,
     Object? offset = null,
     Object? imagesList = null,
-    Object? userImage = freezed,
   }) {
     return _then(_$ImageViewerStateImpl(
       isLoading: null == isLoading
@@ -136,10 +118,6 @@ class __$$ImageViewerStateImplCopyWithImpl<$Res>
           ? _value.isAllLoaded
           : isAllLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      imageIdx: null == imageIdx
-          ? _value.imageIdx
-          : imageIdx // ignore: cast_nullable_to_non_nullable
-              as int,
       offset: null == offset
           ? _value.offset
           : offset // ignore: cast_nullable_to_non_nullable
@@ -148,10 +126,6 @@ class __$$ImageViewerStateImplCopyWithImpl<$Res>
           ? _value._imagesList
           : imagesList // ignore: cast_nullable_to_non_nullable
               as List<UserImage>,
-      userImage: freezed == userImage
-          ? _value.userImage
-          : userImage // ignore: cast_nullable_to_non_nullable
-              as UserImage?,
     ));
   }
 }
@@ -162,10 +136,8 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
   _$ImageViewerStateImpl(
       {this.isLoading = true,
       this.isAllLoaded = false,
-      this.imageIdx = 0,
       this.offset = 0,
-      final List<UserImage> imagesList = const [],
-      this.userImage})
+      final List<UserImage> imagesList = const []})
       : _imagesList = imagesList;
 
   @override
@@ -174,9 +146,6 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
   @override
   @JsonKey()
   final bool isAllLoaded;
-  @override
-  @JsonKey()
-  final int imageIdx;
   @override
   @JsonKey()
   final int offset;
@@ -190,11 +159,8 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
   }
 
   @override
-  final UserImage? userImage;
-
-  @override
   String toString() {
-    return 'ImageViewerState(isLoading: $isLoading, isAllLoaded: $isAllLoaded, imageIdx: $imageIdx, offset: $offset, imagesList: $imagesList, userImage: $userImage)';
+    return 'ImageViewerState(isLoading: $isLoading, isAllLoaded: $isAllLoaded, offset: $offset, imagesList: $imagesList)';
   }
 
   @override
@@ -206,18 +172,14 @@ class _$ImageViewerStateImpl implements _ImageViewerState {
                 other.isLoading == isLoading) &&
             (identical(other.isAllLoaded, isAllLoaded) ||
                 other.isAllLoaded == isAllLoaded) &&
-            (identical(other.imageIdx, imageIdx) ||
-                other.imageIdx == imageIdx) &&
             (identical(other.offset, offset) || other.offset == offset) &&
             const DeepCollectionEquality()
-                .equals(other._imagesList, _imagesList) &&
-            (identical(other.userImage, userImage) ||
-                other.userImage == userImage));
+                .equals(other._imagesList, _imagesList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isAllLoaded, imageIdx,
-      offset, const DeepCollectionEquality().hash(_imagesList), userImage);
+  int get hashCode => Object.hash(runtimeType, isLoading, isAllLoaded, offset,
+      const DeepCollectionEquality().hash(_imagesList));
 
   @JsonKey(ignore: true)
   @override
@@ -231,23 +193,17 @@ abstract class _ImageViewerState implements ImageViewerState {
   factory _ImageViewerState(
       {final bool isLoading,
       final bool isAllLoaded,
-      final int imageIdx,
       final int offset,
-      final List<UserImage> imagesList,
-      final UserImage? userImage}) = _$ImageViewerStateImpl;
+      final List<UserImage> imagesList}) = _$ImageViewerStateImpl;
 
   @override
   bool get isLoading;
   @override
   bool get isAllLoaded;
   @override
-  int get imageIdx;
-  @override
   int get offset;
   @override
   List<UserImage> get imagesList;
-  @override
-  UserImage? get userImage;
   @override
   @JsonKey(ignore: true)
   _$$ImageViewerStateImplCopyWith<_$ImageViewerStateImpl> get copyWith =>

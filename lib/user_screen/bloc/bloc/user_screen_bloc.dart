@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:bot_toast/bot_toast.dart';
-import 'package:eclipse_test/core/config.dart';
 import 'package:eclipse_test/user_screen/bloc/bloc/user_api.dart';
 import 'package:eclipse_test/user_screen/entities/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,73 +14,61 @@ class UserScreenBloc extends Bloc<UserScreenEvent, UserScreenState> {
   UserScreenBloc(super.initialState) {
     on<UserScreenEvent>((event, emit) async {
       switch (event) {
-        case NextScreenEvent():
-          await _nextScreenHandler(emit);
-          break;
-        case PreviousScreenEvent():
-          _previousScreenHandler(emit);
-          break;
         case UserScreeenInitEvent():
-          await _startEmitter(emit);
+          await _initialize(emit);
+        case NextScreenEvent():
+          _handleGoNext(emit);
+        case PreviousScreenEvent():
+          _handleGoPrevoous(emit);
       }
     });
   }
 
-  Future<void> _startEmitter(Emitter<UserScreenState> emit) async {
-    emit(
-      state.copyWith(isLoading: true),
-    );
-    final newUsers = await _newUsers();
-    if (newUsers == null) return;
+  Future<void> _initialize(Emitter<UserScreenState> emit) async {
+    List<User>? userList;
+    userList = await _loadUsers();
+
+    if (userList != null) {
+      emit(
+        state.copyWith(
+          users: userList,
+        ),
+      );
+    } else {
+      add(UserScreeenInitEvent());
+    }
+  }
+
+  void _handleGoNext(Emitter<UserScreenState> emit) {
+    if (state.isLoading) return;
 
     emit(
       state.copyWith(
-        isLoading: false,
-        users: [...state.users, ...newUsers],
-        offset: state.offset + InfiniteScrollConfig.offsetDelta,
+        currentUser: _loopUserId(1),
       ),
     );
   }
 
-  Future<void> _nextScreenHandler(Emitter<UserScreenState> emit) async {
+  void _handleGoPrevoous(Emitter<UserScreenState> emit) {
     if (state.isLoading) return;
-    if (state.isAllLoaded && state.currentScreen == state.users.length) {
-      emit(
-        state.copyWith(currentScreen: 0),
-      );
-    }
 
     emit(
-      state.copyWith(currentScreen: state.currentScreen + 1),
-    );
-
-    if (state.currentScreen >
-        state.offset - InfiniteScrollConfig.loadingDelta) {
-      final newUsers = await _newUsers();
-      if (newUsers == null) return;
-
-      emit(
-        state.copyWith(
-          users: [...state.users, ...newUsers],
-          offset: state.offset + InfiniteScrollConfig.offsetDelta,
-        ),
-      );
-    }
-  }
-
-  void _previousScreenHandler(Emitter<UserScreenState> emit) {
-    if (state.currentScreen < 1) return;
-    emit(
-      state.copyWith(currentScreen: state.currentScreen - 1),
+      state.copyWith(
+        currentUser: _loopUserId(-1),
+      ),
     );
   }
 
-  Future<List<User>?> _newUsers() async {
-    final response = await _api.fetchUsers(offset: state.offset);
+  int _loopUserId(int userIdDelta) =>
+      (state.users!.length + state.currentUser + userIdDelta) %
+      state.users!.length;
+
+  Future<List<User>?> _loadUsers() async {
+    final response = await _api.fetchUsers();
 
     if (response.isError) {
       BotToast.showText(
-          text: 'Ошибка подгрузки порции данных: {${response.error}}');
+          text: 'Ошибка подгрузки пользоватей: {${response.error}}');
       return null;
     }
 

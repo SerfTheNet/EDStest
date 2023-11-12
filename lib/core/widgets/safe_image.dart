@@ -18,6 +18,7 @@ class SafeImage extends StatelessWidget {
     return FadeInImage.assetNetwork(
       image: imageUrl,
       placeholder: placeholder,
+      placeholderFit: fit,
       imageErrorBuilder: (context, error, stackTrace) {
         return Image.asset(
           placeholder,

@@ -16,11 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserScreenState {
-  bool get isLoading => throw _privateConstructorUsedError;
-  List<User> get users => throw _privateConstructorUsedError;
-  int get currentScreen => throw _privateConstructorUsedError;
-  int get offset => throw _privateConstructorUsedError;
-  bool get isAllLoaded => throw _privateConstructorUsedError;
+  List<User>? get users => throw _privateConstructorUsedError;
+  int get currentUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserScreenStateCopyWith<UserScreenState> get copyWith =>
@@ -33,12 +30,7 @@ abstract class $UserScreenStateCopyWith<$Res> {
           UserScreenState value, $Res Function(UserScreenState) then) =
       _$UserScreenStateCopyWithImpl<$Res, UserScreenState>;
   @useResult
-  $Res call(
-      {bool isLoading,
-      List<User> users,
-      int currentScreen,
-      int offset,
-      bool isAllLoaded});
+  $Res call({List<User>? users, int currentUser});
 }
 
 /// @nodoc
@@ -54,33 +46,18 @@ class _$UserScreenStateCopyWithImpl<$Res, $Val extends UserScreenState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
-    Object? users = null,
-    Object? currentScreen = null,
-    Object? offset = null,
-    Object? isAllLoaded = null,
+    Object? users = freezed,
+    Object? currentUser = null,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      users: null == users
+      users: freezed == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>,
-      currentScreen: null == currentScreen
-          ? _value.currentScreen
-          : currentScreen // ignore: cast_nullable_to_non_nullable
+              as List<User>?,
+      currentUser: null == currentUser
+          ? _value.currentUser
+          : currentUser // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-      isAllLoaded: null == isAllLoaded
-          ? _value.isAllLoaded
-          : isAllLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -93,12 +70,7 @@ abstract class _$$UserScreenStateImplCopyWith<$Res>
       __$$UserScreenStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading,
-      List<User> users,
-      int currentScreen,
-      int offset,
-      bool isAllLoaded});
+  $Res call({List<User>? users, int currentUser});
 }
 
 /// @nodoc
@@ -112,73 +84,46 @@ class __$$UserScreenStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
-    Object? users = null,
-    Object? currentScreen = null,
-    Object? offset = null,
-    Object? isAllLoaded = null,
+    Object? users = freezed,
+    Object? currentUser = null,
   }) {
     return _then(_$UserScreenStateImpl(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      users: null == users
+      users: freezed == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<User>,
-      currentScreen: null == currentScreen
-          ? _value.currentScreen
-          : currentScreen // ignore: cast_nullable_to_non_nullable
+              as List<User>?,
+      currentUser: null == currentUser
+          ? _value.currentUser
+          : currentUser // ignore: cast_nullable_to_non_nullable
               as int,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as int,
-      isAllLoaded: null == isAllLoaded
-          ? _value.isAllLoaded
-          : isAllLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$UserScreenStateImpl implements _UserScreenState {
-  const _$UserScreenStateImpl(
-      {this.isLoading = true,
-      final List<User> users = const [],
-      this.currentScreen = 0,
-      this.offset = 0,
-      this.isAllLoaded = false})
-      : _users = users;
+class _$UserScreenStateImpl extends _UserScreenState {
+  const _$UserScreenStateImpl({final List<User>? users, this.currentUser = 0})
+      : _users = users,
+        super._();
 
+  final List<User>? _users;
   @override
-  @JsonKey()
-  final bool isLoading;
-  final List<User> _users;
-  @override
-  @JsonKey()
-  List<User> get users {
+  List<User>? get users {
+    final value = _users;
+    if (value == null) return null;
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
   @JsonKey()
-  final int currentScreen;
-  @override
-  @JsonKey()
-  final int offset;
-  @override
-  @JsonKey()
-  final bool isAllLoaded;
+  final int currentUser;
 
   @override
   String toString() {
-    return 'UserScreenState(isLoading: $isLoading, users: $users, currentScreen: $currentScreen, offset: $offset, isAllLoaded: $isAllLoaded)';
+    return 'UserScreenState(users: $users, currentUser: $currentUser)';
   }
 
   @override
@@ -186,24 +131,14 @@ class _$UserScreenStateImpl implements _UserScreenState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserScreenStateImpl &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other._users, _users) &&
-            (identical(other.currentScreen, currentScreen) ||
-                other.currentScreen == currentScreen) &&
-            (identical(other.offset, offset) || other.offset == offset) &&
-            (identical(other.isAllLoaded, isAllLoaded) ||
-                other.isAllLoaded == isAllLoaded));
+            (identical(other.currentUser, currentUser) ||
+                other.currentUser == currentUser));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      const DeepCollectionEquality().hash(_users),
-      currentScreen,
-      offset,
-      isAllLoaded);
+      runtimeType, const DeepCollectionEquality().hash(_users), currentUser);
 
   @JsonKey(ignore: true)
   @override
@@ -213,24 +148,15 @@ class _$UserScreenStateImpl implements _UserScreenState {
           this, _$identity);
 }
 
-abstract class _UserScreenState implements UserScreenState {
+abstract class _UserScreenState extends UserScreenState {
   const factory _UserScreenState(
-      {final bool isLoading,
-      final List<User> users,
-      final int currentScreen,
-      final int offset,
-      final bool isAllLoaded}) = _$UserScreenStateImpl;
+      {final List<User>? users, final int currentUser}) = _$UserScreenStateImpl;
+  const _UserScreenState._() : super._();
 
   @override
-  bool get isLoading;
+  List<User>? get users;
   @override
-  List<User> get users;
-  @override
-  int get currentScreen;
-  @override
-  int get offset;
-  @override
-  bool get isAllLoaded;
+  int get currentUser;
   @override
   @JsonKey(ignore: true)
   _$$UserScreenStateImplCopyWith<_$UserScreenStateImpl> get copyWith =>

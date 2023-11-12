@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:eclipse_test/core/helpers/extensions/padding_extension.dart';
 import 'package:eclipse_test/user_screen/view/user_card.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +64,7 @@ class UserScreen extends StatelessWidget {
 
   Widget _buildAnimatedCard(BuildContext context, UserScreenState state) {
     final slideTween = Tween(
-      begin: Offset.fromDirection(pi / 2, 1),
+      begin: const Offset(0, 0.3),
       end: Offset.zero,
     );
     final fadeTween = Tween<double>(
@@ -76,7 +74,7 @@ class UserScreen extends StatelessWidget {
 
     return AnimatedSwitcher(
       switchInCurve: Curves.easeIn,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 500),
       transitionBuilder: (child, animation) => FadeTransition(
         opacity: animation.drive<double>(fadeTween),
         child: SlideTransition(

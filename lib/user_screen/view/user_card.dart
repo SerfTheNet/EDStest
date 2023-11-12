@@ -29,8 +29,7 @@ class UserCard extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: [
             _buildUserPhoto(context).withPadding(
               const EdgeInsets.only(bottom: 12),
